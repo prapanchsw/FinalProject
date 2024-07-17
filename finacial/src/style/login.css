@@ -1,8 +1,10 @@
-body{
+html,body{
     background-size: cover;
    display: flex;
    align-items: center;
-   padding-left:0
+   padding-left:0;
+   overflow: hidden;
+   margin: 0 auto;
    
 }
 

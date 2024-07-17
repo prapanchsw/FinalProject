@@ -59,7 +59,7 @@ const Login = () => {
                         color: 'white',
                         zIndex: '1',
                         backdropFilter: 'blur(100px) brightness(300%)' ,
-                       
+                    
         }}
         onSubmit={handleSubmit}
           >

@@ -4,7 +4,7 @@ body{
     align-items: center;
     width:200vh ;
     height:120vh ;
-    
+    overflow-x: hidden;
 }
 
 #background-video {
