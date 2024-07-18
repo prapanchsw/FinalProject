@@ -16,8 +16,8 @@ const StyledCard = styled.div`
   max-width: 300px;
   max-height:350px;
   margin-top:50px;
-  background-color: rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(10px) brightness(120%); 
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(10px) brightness(200%); 
   box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
   border: 1px solid rgba(255, 255, 255, 0.1); 
   border-radius:10px;

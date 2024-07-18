@@ -33,9 +33,10 @@ const Signup = () => {
         Your browser does not support the video tag.
             </video>
           <div className="overlay"></div> 
-          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',paddingTop: '100px'}} >
           <form
-                    style={{
+          style={{
+                        
                         width: '100%',
                         maxWidth: 300,
                         padding: '40px',
@@ -44,11 +45,13 @@ const Signup = () => {
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
                         color: 'white',
                         zIndex: '1',
-                        backdropFilter: 'blur(100px) brightness(300%)' ,
+                        backdropFilter: 'blur(100px) brightness(300%)',
+                       overflow: 'hidden',
+                        padding:'40px'
                        
                   }}>
                   <Grid container spacing={2} justifyContent="center">
-                  <Grid item xs={12}>
+                  <Grid item xs={12} md={12} sm={12} lg={12}>
                   <Typography variant="h4" align="center" gutterBottom>
             Create Account
                 </Typography>
@@ -63,38 +66,8 @@ const Signup = () => {
          
                              
                                   sx={textFieldStyles} />
-                              
-
-                              <TextField         
-              type="number"
-              label="Age"
-              variant="filled"
-              fullWidth
-              style={{ marginBottom: '10px' }}
-         
+               
                              
-                                sx={textFieldStyles}/>
-                              
-                             
-                              
-                              <Grid item xs={12}>
-                  
-                                  <FormControl fullWidth variant='filled' sx={textFieldStyles} style={{ marginBottom: '-15px' }}>
-    <InputLabel id="demo-simple-select-label" sx={{color: 'white',}}>Gender</InputLabel>
-    <Select
-      // value={age}
-                                          label="gender"
-                                        
-                                          autoWidth
-                                          // onChange={handleChange}
-                      
-    >
-      <MenuItem value={'Male'} sx={{}}>Male</MenuItem>
-      <MenuItem value={'Female'}>Female</MenuItem>
-    
-    </Select>
-        </FormControl>
-                    </Grid>
 <br />
                     <TextField         
               type="email"

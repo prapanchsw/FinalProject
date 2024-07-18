@@ -1,6 +1,8 @@
 import React from 'react'
-import { Bathroom, Home, Mail } from '@mui/icons-material';
+import { AdminPanelSettings, Bathroom, Home, Mail, PersonPinCircleOutlined } from '@mui/icons-material';
+
 export const Sidebar = [
+  
     {
         title: "Home",
         icon: <Home/>,
