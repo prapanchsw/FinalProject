@@ -18,8 +18,8 @@ const Admin = () => {
                     {Sidebar.map((val, key) => (
                         <li key={key} className="sidebar-item" style={{ display: 'flex', alignItems: 'center', padding: '10px 50px 20px 20px', marginTop: '-60px' }}>
                             <br /><br /><br />
-                            <div style={{ fontSize: 35 }}>{val.icon}</div> &nbsp;&nbsp;&nbsp;
-                            <div style={{ fontSize: 20 }}>{val.title}</div>
+                            <div style={{ fontSize: 30 }}>{val.icon}</div> &nbsp;&nbsp;&nbsp;
+                            <div style={{ fontSize: 18 }}>{val.title}</div>
                         </li>
                     ))}
                 </ul>

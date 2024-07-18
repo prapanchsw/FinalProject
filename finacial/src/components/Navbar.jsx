@@ -13,7 +13,7 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1,color:'#00ffc7' }}>
             Admin Panel
           </Typography>
-          <Button color="inherit">Login Out</Button>
+          <Button color="inherit" id="btnnav">Login Out</Button>
         </Toolbar>
       </AppBar>
           </Box>

@@ -1,19 +1,19 @@
 import React from 'react'
-import { AdminPanelSettings, Bathroom, Home, Mail, PersonPinCircleOutlined } from '@mui/icons-material';
+import { AccountBalance, AdminPanelSettings, Bathroom, ExpandCircleDown, Home, Mail, ManageAccountsOutlined, Person2, Person2Outlined, PersonPinCircleOutlined } from '@mui/icons-material';
 
 export const Sidebar = [
   
     {
-        title: "Home",
-        icon: <Home/>,
+        title: "Profile",
+        icon: <Person2Outlined/>,
     },
     {
-        title: "Mail",
-        icon: <Mail/>,
+        title: "User Administration",
+        icon: <ManageAccountsOutlined/>,
     },
     {
-        title: "cahir",
-        icon: <Bathroom/>,
+        title: "Expense",
+        icon: <AccountBalance/>,
 },
 ]
 
