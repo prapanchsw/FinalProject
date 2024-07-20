@@ -33,7 +33,7 @@ const Signup = () => {
         Your browser does not support the video tag.
             </video>
           <div className="overlay"></div> 
-          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',paddingBottom:'20px'}} >
+          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',paddingBottom:'10px'}} >
           <form
           style={{
                         
