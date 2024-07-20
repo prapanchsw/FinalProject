@@ -1,10 +1,12 @@
-body{
+body,html{
      background-size: cover;
     display: flex;
     align-items: center;
     width:200vh ;
     height:120vh ;
+    overflow-y: scroll auto;
     overflow-x: hidden;
+ 
 }
 
 #background-video {
@@ -154,3 +156,4 @@ body{
   .link:hover {
     color: white;
   }
+

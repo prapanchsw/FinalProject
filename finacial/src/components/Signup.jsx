@@ -13,10 +13,10 @@ const textFieldStyles = {
       },
     },
     '& .MuiFilledInput-underline:before': {
-      borderBottomColor: 'rgba(255, 255, 255, 0.6)', // default border color
+      borderBottomColor: 'rgba(255, 255, 255, 0.6)', 
     },
     '& .MuiFilledInput-underline:after': {
-      borderBottomColor: 'light blue', // border color when focused
+      borderBottomColor: 'light blue', 
     },
     '& .MuiInputLabel-root': {
       color: 'white',
@@ -33,13 +33,13 @@ const Signup = () => {
         Your browser does not support the video tag.
             </video>
           <div className="overlay"></div> 
-          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',paddingTop: '100px'}} >
+          <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center',paddingBottom:'20px'}} >
           <form
           style={{
                         
-                        width: '100%',
-                        maxWidth: 300,
-                        padding: '40px',
+                   width: '100%',
+                  maxWidth: '400px',
+                  padding: '30px',
                         borderRadius: '20px',
                         boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',

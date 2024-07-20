@@ -13,9 +13,9 @@ const Container = styled.div`
 `;
 
 const StyledCard = styled.div`
-  max-width: 300px;
+  max-width: 400px;
   max-height:350px;
-  margin-top:50px;
+
   background-color: rgba(255, 255, 255, 0.4); 
   backdrop-filter: blur(10px) brightness(200%); 
   box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
@@ -56,7 +56,7 @@ achieving financial goals.</p>
       </Button>
       <Button id='btn1'><Link to='/login' className='link' >Login</Link></Button>
       <Button id='btn2'> <Link to='/signup' className='link'>
-      Get Started </Link ></Button> 
+     Create Account </Link ></Button> 
       <Button id='btn3'>About</Button>
 
       <div id="card1">
