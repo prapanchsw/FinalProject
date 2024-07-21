@@ -3,9 +3,13 @@ import './App.css'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import Signup from './components/Signup'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Router, Routes } from 'react-router-dom'
 import AdminPage from './components/AdminPage'
-import User from './components/User'
+import Userpg from './components/Userpg'
+import Addincome from './components/Addincome'
+import Navbar from './components/Navbar'
+import Navbaruser from './components/Navbaruser'
+import { Switch } from '@mui/material'
 
 
 function App() {
@@ -20,10 +24,12 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/admin' element={<AdminPage />} />
-        <Route path='/user' element={<User />}/>
-        
-       
+        <Route path='/user' element={<Userpg />} />
+        <Route path='/addincome' element={<Addincome />}/>
+        {/* <Navbaruser /> */}       
       </Routes>
+
+      
     </>
   )
 }
