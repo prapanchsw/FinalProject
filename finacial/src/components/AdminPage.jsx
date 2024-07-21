@@ -1,13 +1,17 @@
-// src/AdminPage.js
 import React from 'react';
 import Navbar from './Navbar';
 import Admin from './Admin';
+import { Padding } from '@mui/icons-material';
 
 const AdminPage = () => {
   return (
-    <div>
-      <Navbar/>
-      <Admin />
+    <div >
+        <div >
+        <Navbar />
+      </div>
+      <div >
+        <Admin />
+        </div>
     </div>
   );
 };

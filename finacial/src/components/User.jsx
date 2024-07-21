@@ -5,7 +5,7 @@ const User = () => {
   return (
     <div>
           <Typography>Hello</Typography>
-          <P>qwd</P>
+          <P></P>
     </div>
   )
 }

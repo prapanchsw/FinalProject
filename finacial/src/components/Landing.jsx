@@ -32,9 +32,9 @@ const StyledCard = styled.div`
 const Landing = () => {
   return (
     
-    <div>
+    <div className="landing">
     
-      <div className="video-background">
+      <div className="video-background" >
      
       <video autoPlay muted loop id="background-video">
         <source src={video}type="video/mp4" />

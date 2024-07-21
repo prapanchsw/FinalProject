@@ -1,14 +1,15 @@
-body,html{
+html{
      background-size: cover;
     display: flex;
     align-items: center;
     width:200vh ;
     height:120vh ;
-    overflow-y: scroll auto;
-    overflow-x: hidden;
+         
+  overflow-y: scroll;
+  overflow-x: hidden;
+
  
 }
-
 #background-video {
     position: absolute;
     top: 50%;
@@ -157,3 +158,5 @@ body,html{
     color: white;
   }
 
+  
+ 

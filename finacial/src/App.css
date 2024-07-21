@@ -1,20 +1,24 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+html,body{
+  max-height:auto;
+  max-width: auto;
+  /* margin-left: 50px ;  */
   padding: 0;
-  display: flex;
+  margin: 0;
+   display: flex; 
   flex-direction: column;
   align-items: flex-start;
-  
+  overflow-y: hidden;
   
 }
 .background1{
-  height: 130vh;
-  width: 211vh;
+  height: 100vh;
+  width: 400vh;
   background-color:#000910;
   margin: 0;
   padding: 0;
-  overflow-y: scroll auto;
+  /* overflow-y: scroll auto; */
+  overflow-y: hidden; 
+  
   
 }
 
@@ -22,14 +26,15 @@
 .sidebar{
 
   height: 100%;
-  width: 260px;
+  width:540px;
+  margin-top:50px;
   background-color:rgb(255, 255, 255);
 
 }
 
 .sidebarlist{
 height: 100%;
-width: 100%;
+width:100%; 
 background-color:#022334;
 color: #00ffc7; 
 overflow: scroll auto;
@@ -38,19 +43,20 @@ overflow: scroll auto;
 
 
 }
-.sidebar {
+ .sidebar {
   display: flex;
-  flex-direction: column; /* Stack list items vertically */
-  align-items: flex-start; 
+  flex-direction: column; 
+   align-items: flex-start;  
+   height: 120vh;
   
-}
+ }
 
-.sidebarlist ul {
+ .sidebarlist ul {
   list-style-type: none; 
    padding: 0;
   margin: 0;
   
-}
+} 
 
 .sidebar li {
   display: flex; 
@@ -66,9 +72,8 @@ overflow: scroll auto;
 .sidebar-item {
   display: flex;
   align-items: center;
-  /* padding: 5px 10px;  */
   cursor: pointer;
-  margin-bottom: 50px; 
+  margin-bottom: 70px; 
   border-radius: 10px;
 }
 

@@ -4,8 +4,8 @@ import React from 'react'
 const Navbar = () => {
   return (
     <div>
-       <Box sx={{ flexGrow: 1 ,paddingTop:'60px',width:"211vh"}} className='navbar1'>
-      <AppBar position="static" sx={{backgroundColor:'#000910', borderBottom: '2px solid #01ffc9' }} >
+       <Box sx={{ flexGrow: 1 ,paddingTop:'0',width:"221vh"}} className='navbar1'>
+      <AppBar sx={{backgroundColor:'#000910', borderBottom: '2px solid #01ffc9' }} >
         <Toolbar>
          
             
