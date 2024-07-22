@@ -19,7 +19,7 @@ app.post('/login', async (req, res) => {
       console.log(`User found: ${user.email}`);
       if (user.password === password.trim()) {
         console.log("Login successful");
-        return res.json("success");
+        return res.json({ status:"success",user:{email:user.email,name:user.name}});
       } else {
         console.log("Incorrect password");
         return res.json("password incorrect");
@@ -36,6 +36,7 @@ app.post('/login', async (req, res) => {
 
 app.post('/add', async (req, res) => {
   try {
+    console.log('getting')
     await model(req.body).save();
     res.send("Data Saved");
   } catch (error) {
@@ -44,6 +45,17 @@ app.post('/add', async (req, res) => {
   }
 });
 
+app.get('/userview', async (req, res) => {
+  try {
+    console.log('Fetching user data...');
+    const users = await model.find();
+    res.json(users);
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ status: 'error', message: 'Error fetching user data' });
+  }
+});
 app.listen(3000, () => {
   console.log('app is running');
 });
+

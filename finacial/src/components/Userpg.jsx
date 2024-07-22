@@ -1,22 +1,18 @@
 import React from 'react';
 import Navbaruser from './Navbaruser';
-
-import { Padding } from '@mui/icons-material';
 import User from './User';
 
-
-const Userpg = () => {
+const Userpg = ({ userDetails }) => {
   return (
-    <div >
-        <div >
+    <div>
+      <div>
         <Navbaruser />
       </div>
-      <div >
-        <User />
-        </div>
+      <div>
+        <User userDetails={userDetails} />
+      </div>
     </div>
   );
 };
 
-
-export default Userpg
+export default Userpg;

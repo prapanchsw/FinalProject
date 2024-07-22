@@ -10,6 +10,7 @@ import Addincome from './components/Addincome'
 import Navbar from './components/Navbar'
 import Navbaruser from './components/Navbaruser'
 import { Switch } from '@mui/material'
+import UserProfile from './components/UserProfile'
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/admin' element={<AdminPage />} />
         <Route path='/user' element={<Userpg />} />
-        <Route path='/addincome' element={<Addincome />}/>
+        <Route path='/addincome' element={<Addincome />} /> 
+        <Route path='/userprofile' element={<UserProfile />}/> 
         {/* <Navbaruser /> */}       
       </Routes>
 

@@ -35,26 +35,27 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (role === 'user') {
-      axios.post('http://localhost:3000/login', { email, password })
-        .then(result => {
-          console.log(result);
-          if (result.data === "success") {
-            navigate('/user');
-          } else {
-            setError('Login failed');
-          }
-        })
-        .catch(err => {
-          console.log(err);
-          setError('Login failed');
-        });
+      try {
+        const response = await axios.post('http://localhost:3000/login', { email, password });
+        console.log(response);
+        if (response.data.status === 'success') {
+          navigate('/userprofile', {
+            state: { email: response.data.user.email, name: response.data.user.name }
+          });
+        } else {
+          setError('Login failed: ' + response.data.message);
+        }
+      } catch (err) {
+        console.log(err);
+        setError('Login failed');
+      }
     } else {
       setError('Please select the "user" role to login.');
     }
-  }
+  };
 
   const handleChange = (event) => {
     setRole(event.target.value);

@@ -6,7 +6,7 @@ export const Sidebaruser = [
     {
         title: "Profile",
         icon: <Person2Outlined />,
-        link:"/"
+        link:"/userprofile"
     },
     {
         title: "Add Income",
