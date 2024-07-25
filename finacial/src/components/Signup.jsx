@@ -37,7 +37,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3000/add', { name,email,password })
+    axios.post('http://localhost:3000/add', { name,email,password})
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Password:', password);

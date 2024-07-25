@@ -17,7 +17,7 @@ export const Sidebaruser = [
     {
         title: "Expense",
         icon: <AccountBalance />,
-        link:"/"
+        link:"/showexpense"
 },
 ]
 

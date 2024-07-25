@@ -1,48 +1,28 @@
-import { Button, Container, Paper, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { Button, Container, Paper, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Userpg from './Userpg';
-import { BorderColor, BorderColorOutlined, Margin, ScoreOutlined } from '@mui/icons-material';
+import { useLocation } from 'react-router-dom';
 
 const styles = {
     root: {
         textAlign: 'center',
         padding: '40px',
-        position: 'relative', // Ensure the container is relative for proper absolute positioning
-        zIndex: 1, // Base content zIndex
+        position: 'relative',
+        zIndex: 1,
         width: '130vh',
         borderRadius: '40px',
-      
     },
     form: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         marginBottom: '20px',
-        marginLeft:'110px',
+        marginLeft: '110px',
         padding: '20px',
-        backgroundColor: '#01ffc9', 
+        backgroundColor: '#01ffc9',
         border: '2px solid #01ffc9',
         borderRadius: '20px',
-       
-        
-    },
-    table: {
-        marginTop: '20px',
-        backgroundColor: '#fff',
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
-        zIndex: 2, // Ensure overlay is above the base content
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      
-      
     },
     userpg: {
         position: 'static',
@@ -50,43 +30,58 @@ const styles = {
         left: 0,
         width: '100%',
         height: '10%',
-        zIndex: 1, // Ensure Userpg is behind the overlay
-        
+        zIndex: 1,
     }
 };
 
 const Addincome = () => {
-    const [transactions, setTransactions] = useState([]);
     const [amount, setAmount] = useState('');
     const [category, setCategory] = useState('');
     const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
+    
+    const location = useLocation();
+    const { email, userId } = location.state || {}; // Ensure userId is available in the state
 
-    const handleAddTransaction = (e) => {
+    const handleAddTransaction = async (e) => {
         e.preventDefault();
-        const newTransaction = { id: transactions.length + 1, amount, category, date, description };
-        setTransactions([...transactions, newTransaction]);
-        setAmount('');
-        setCategory('');
-        setDate('');
-        setDescription('');
+    
+        // Check if all fields are filled
+        if (!amount || !category || !date || !description) {
+            console.error('Please fill out all required fields.');
+            return;
+        }
+    
+        try {
+            const response = await axios.post('http://localhost:3000/addexpense', {
+                email: email.trim(), // Use the actual user email
+                category,
+                body: description, // Use the description as the body
+                amount,
+                date,
+            });
+    
+            console.log('Transaction added:', response.data);
+    
+          
+            setAmount('');
+            setCategory('');
+            setDate('');
+            setDescription('');
+        } catch (error) {
+            console.error('Error adding transaction:', error.response.data);
+        }
     };
-
-    const handleDeleteTransaction = (id) => {
-        setTransactions(transactions.filter(transaction => transaction.id !== id));
-    };
+    
 
     return (
-        <div style={{  overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%' ,paddingLeft:'30px'}}>
-            
+        <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', paddingLeft: '30px' }}>
             <div style={styles.userpg}>
                 <Userpg />
             </div>
-
-            {/* Main Content */}
             <Container style={styles.root}>
-                <Typography variant="h4"  gutterBottom>User Dashboard</Typography>
-                <Paper style={styles.form} elevation={3} >
+                <Typography variant="h4" gutterBottom>User Dashboard</Typography>
+                <Paper style={styles.form} elevation={3}>
                     <form onSubmit={handleAddTransaction}>
                         <TextField
                             label="Amount"
@@ -128,10 +123,9 @@ const Addincome = () => {
                         </Button>
                     </form>
                 </Paper>
-               
             </Container>
         </div>
-    )
-}
+    );
+};
 
 export default Addincome;

@@ -42,8 +42,10 @@ const Login = () => {
         const response = await axios.post('http://localhost:3000/login', { email, password });
         console.log(response);
         if (response.data.status === 'success') {
+          const userIdResponse = await axios.get(`http://localhost:3000/userid?email=${email}`);
+          console.log('userIdResponse',userIdResponse);
           navigate('/userprofile', {
-            state: { email: response.data.user.email, name: response.data.user.name }
+            state: { email: response.data.user.email, name: response.data.user.name ,id:userIdResponse.data.userId}
           });
         } else {
           setError('Login failed: ' + response.data.message);
