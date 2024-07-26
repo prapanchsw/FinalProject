@@ -5,15 +5,18 @@ export const Sidebar = [
   
     {
         title: "Profile",
-        icon: <Person2Outlined/>,
+        icon: <Person2Outlined />,
+        link:"/adminprofile"
     },
     {
         title: "User Administration",
-        icon: <ManageAccountsOutlined/>,
+        icon: <ManageAccountsOutlined />,
+        link:"/useradmin"
     },
     {
         title: "Expense",
-        icon: <AccountBalance/>,
+        icon: <AccountBalance />,
+        link:"/adminprofile"
 },
 ]
 

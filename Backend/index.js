@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('./connection');
 const User = require('./model/user');
-
+const Admin = require('./model/admin');
 const app = express();
 
 app.use(express.json());
@@ -74,12 +74,23 @@ app.get('/userview', async (req, res) => {
   try {
     console.log('Fetching user data...');
     const users = await User.find();
-    res.json(users);
+
+    // Map transactions count to users
+    const userData = users.map(user => ({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      transactionCount: user.expense.length,
+    }));
+
+    res.json(userData);
   } catch (error) {
     console.error('Error fetching user data:', error);
     res.status(500).json({ status: 'error', message: 'Error fetching user data' });
   }
 });
+
 
 // Add expense route
 app.post('/addexpense', async (req, res) => {
@@ -112,7 +123,6 @@ app.post('/addexpense', async (req, res) => {
   }
 });
 
-// Get expenses route
 app.get('/expenses', async (req, res) => {
   const { userId } = req.query;
 
@@ -149,6 +159,54 @@ app.get('/userid', async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 });
+
+
+
+// Login route
+app.post('/loginadmin', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(`Received login request for email: ${email}`);
+
+  try {
+    const admin = await Admin.findOne({ email: email.trim() });
+    if (admin) {
+      console.log(`User found: ${admin.email}`);
+      if (admin.password === password.trim()) {
+        console.log('Login successful');
+        return res.json({ status: 'success', user: { email: admin.email, name: admin.name, id: admin._id } });
+      } else {
+        console.log('Incorrect password');
+        return res.status(401).json({ status: 'error', message: 'Password incorrect' });
+      }
+    } else {
+      console.log('User not found');
+      return res.status(404).json({ status: 'error', message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    return res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+});
+
+// Login route for admin
+
+app.get('/adminid', async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const admin = await Admin.findOne({ email: email.trim() });
+
+    if (admin) {
+      res.status(200).json({ status: 'success', userId: admin._id });
+    } else {
+      res.status(404).json({ status: 'error', message: 'Admin not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching admin ID:', error);
+    res.status(500).json({ status: 'error', message: 'Internal server error' });
+  }
+});
+
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

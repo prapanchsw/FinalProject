@@ -35,30 +35,51 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const handleLogin = async (url, userRole) => {
+    try {
+      const response = await axios.post(url, { email, password });
+      console.log('Login Response:', response);
+  
+      if (response.data.status === 'success') {
+        console.log('Response Data:', response.data);
+  
+        // Ensure response.data.user exists
+        if (!response.data.user) {
+          throw new Error('User data not found in response');
+        }
+  
+        // Conditional navigation based on userRole
+        if (userRole === 'admin') {
+          navigate('/adminprofile', {
+            state: { email: response.data.user.email, name: response.data.user.name, id: response.data.user.id }
+          });
+        } else if (userRole === 'user') {
+          navigate('/userprofile', {
+            state: { email: response.data.user.email, name: response.data.user.name, id: response.data.user.id }
+          });
+        } else {
+          setError('Invalid role');
+        }
+      } else {
+        setError('Login failed: ' + response.data.message);
+      }
+    } catch (err) {
+      console.error('Login Error:', err);
+      setError('Login failed');
+    }
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (role === 'user') {
-      try {
-        const response = await axios.post('http://localhost:3000/login', { email, password });
-        console.log(response);
-        if (response.data.status === 'success') {
-          const userIdResponse = await axios.get(`http://localhost:3000/userid?email=${email}`);
-          console.log('userIdResponse',userIdResponse);
-          navigate('/userprofile', {
-            state: { email: response.data.user.email, name: response.data.user.name ,id:userIdResponse.data.userId}
-          });
-        } else {
-          setError('Login failed: ' + response.data.message);
-        }
-      } catch (err) {
-        console.log(err);
-        setError('Login failed');
-      }
+      await handleLogin('http://localhost:3000/login', 'user');
+    } else if (role === 'admin') {
+      await handleLogin('http://localhost:3000/loginadmin', 'admin');
     } else {
-      setError('Please select the "user" role to login.');
+      setError('Please select a role to login.');
     }
   };
-
+  
   const handleChange = (event) => {
     setRole(event.target.value);
   };
@@ -93,10 +114,10 @@ const Login = () => {
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label" sx={{ color: 'white' }}>Role</InputLabel>
+                <InputLabel id="role-select-label" sx={{ color: 'white' }}>Role</InputLabel>
                 <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
+                  labelId="role-select-label"
+                  id="role-select"
                   value={role}
                   label="Role"
                   onChange={handleChange}

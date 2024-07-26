@@ -12,6 +12,10 @@ import Navbaruser from './components/Navbaruser'
 import { Switch } from '@mui/material'
 import UserProfile from './components/UserProfile'
 import Showexpense from './components/Showexpense'
+import AdminProfile from './components/AdminProfile'
+import Useradmin from './components/Useradmin'
+import Adminexpenseview from './components/Adminexpenseview'
+
 
 
 function App() {
@@ -30,6 +34,10 @@ function App() {
         <Route path='/addincome' element={<Addincome />} /> 
         <Route path='/userprofile' element={<UserProfile />} /> 
         <Route path='/showexpense' element={<Showexpense />} />
+        <Route path='/adminprofile' element={<AdminProfile />} />
+        <Route path='/useradmin' element={ <Useradmin/>} />
+       <Route path='/view' element={<Adminexpenseview/>}/>
+       
         {/* <Navbaruser /> */}       
       </Routes>
 
