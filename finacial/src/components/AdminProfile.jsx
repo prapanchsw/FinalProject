@@ -71,14 +71,13 @@ const AdminProfile = () => {
                 <AdminPage />
             </div>
 
-            {/* Main Content */}
             <Container sx={{marginLeft: '140vh',color:"",paddingTop: '50px'}}>
                 
-                <div>
-                <Typography variant="h5" color="#00ffc7">Id: {id}</Typography>
-                        <Typography variant="h5" color="#00ffc7">Name: {name}</Typography>
+                <div >
+                <Typography variant="h5" color="black">Id: {id}</Typography>
+                        <Typography variant="h5" color="black">Name: {name}</Typography>
                         <br /><br />
-                        <Typography variant="h5" color="#00ffc7">Email:{email}</Typography>
+                        <Typography variant="h5" color="black">Email:{email}</Typography>
 
                     </div>
               

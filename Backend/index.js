@@ -39,13 +39,14 @@ app.get('/delete-expense', async (req, res) => {
   const { transactionId, userId } = req.query;
 
   try {
-    // Find the user by ID
+  
     const user = await User.findById(userId);
     if (user) {
-      // Find and remove the transaction from the user's expenses array
-      user.expense = user.expense.map(expenses =>
-        expenses.filter(expense => expense._id.toString() !== transactionId)
-      );
+      // Remove the transaction from the user's expenses array and filter out any empty arrays
+      user.expense = user.expense
+        .map(expenses => expenses.filter(expense => expense._id.toString() !== transactionId))
+        .filter(expenses => expenses.length > 0);
+
       // Save the updated user document
       await user.save();
 
@@ -58,6 +59,7 @@ app.get('/delete-expense', async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
 });
+
 app.post('/add', async (req, res) => {
   try {
     console.log('Saving data...');
@@ -96,22 +98,22 @@ app.get('/userview', async (req, res) => {
 app.post('/addexpense', async (req, res) => {
   const { email, category, body, amount, date } = req.body;
 
-  // Validate request data
+ 
   if (!email || !category || !body || !amount || !date) {
     return res.status(400).json({ status: 'error', message: 'Missing required fields' });
   }
 
   try {
-    // Log incoming data for debugging
+  
     console.log('Adding expense with data:', { email, category, body, amount, date });
 
     // Find user
     const user = await User.findOne({ email: email.trim() });
 
     if (user) {
-      // Create new expense object
+     
       const newExpense = { category, body, amount, date: new Date(date) };
-      user.expense.push([newExpense]); // Adjust based on your schema
+      user.expense.push([newExpense]); 
       await user.save();
       res.status(201).json({ status: 'success', user });
     } else {

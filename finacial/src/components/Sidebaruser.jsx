@@ -9,7 +9,7 @@ export const Sidebaruser = [
         link:"/userprofile"
     },
     {
-        title: "Add Income",
+        title: "Add Expense",
         icon: <ManageAccountsOutlined />,
         link: "/addincome"
         
@@ -20,5 +20,6 @@ export const Sidebaruser = [
         link:"/showexpense"
 },
 ]
+
 
 

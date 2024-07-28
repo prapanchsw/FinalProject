@@ -15,12 +15,12 @@ const Admin = () => {
             <div className="sidebar" sx={{overflowY:'hidden',position:'fixed'}}>
                 <ul className="sidebarlist" style={{marginLeft: '-130px', paddingLeft: '100%', height: '100%', overflow:'hidden'}}>
                     <li style={{ display: 'flex', alignItems: 'center', padding: '50px 20px 5px 20px' }}>
-                        <AdminPanelSettings sx={{ fontSize: 100, marginRight:'20px' ,marginLeft:'330px'}} /> 
+                        <AdminPanelSettings sx={{ fontSize: 100, marginRight:'20px' ,marginLeft:'330px',color:'white'}} /> 
                        
                     </li>
                     <br /> <br /> <br /><br />
                     {Sidebar.map((val, key) => (
-                        <li key={key} className="sidebar-item" style={{ display: 'flex', alignItems: 'center', marginTop: '-50px', marginLeft: '330px' }}
+                        <li key={key} className="sidebar-item" style={{ display: 'flex', alignItems: 'center', marginTop: '-70px', marginLeft: '330px' }}
                         onClick={() => navigate(val.link, { state: { detail: val.title, email, name ,id} })}>
                             <br /><br /><br />
                             <div style={{ fontSize: 30 }}>{val.icon}</div> &nbsp;&nbsp;&nbsp;

@@ -29,10 +29,10 @@ const User = () => {
 
   return (
     <div className="background1">
-      <div className="sidebar" style={{ overflowY: 'hidden', position: 'relative', width: '130vh' }}>
-        <ul className="sidebarlist" style={{ marginLeft: '-70vh', paddingLeft: '100%', height: '100%', overflow: 'hidden' }}>
+      <div className="sidebar" style={{ overflowY: 'hidden', position: 'relative', width: '130vh',}}>
+        <ul className="sidebarlist" style={{ marginLeft: '-70vh', paddingLeft: '100%', height: '100%', overflow: 'hidden' ,backgroundColor:'#212121' }}>
           <li style={{ display: 'flex', alignItems: 'center', padding: '30px 0 10px 10px' }}>
-            <AccountCircleOutlined style={{ fontSize: 100, marginRight: '20px', marginLeft: '330px' }} />
+            <AccountCircleOutlined style={{ fontSize: 100, marginRight: '20px', marginLeft: '330px',color:'white'}} />
             
           </li>
           <br /><br /><br /><br />

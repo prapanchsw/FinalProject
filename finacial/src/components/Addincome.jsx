@@ -20,8 +20,8 @@ const styles = {
         marginBottom: '20px',
         marginLeft: '110px',
         padding: '20px',
-        backgroundColor: '#01ffc9',
-        border: '2px solid #01ffc9',
+        backgroundColor: '',
+        
         borderRadius: '20px',
     },
     userpg: {
@@ -54,9 +54,9 @@ const Addincome = () => {
     
         try {
             const response = await axios.post('http://localhost:3000/addexpense', {
-                email: email.trim(), // Use the actual user email
+                email: email.trim(), 
                 category,
-                body: description, // Use the description as the body
+                body: description, 
                 amount,
                 date,
             });

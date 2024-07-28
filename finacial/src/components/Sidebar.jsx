@@ -13,11 +13,7 @@ export const Sidebar = [
         icon: <ManageAccountsOutlined />,
         link:"/useradmin"
     },
-    {
-        title: "Expense",
-        icon: <AccountBalance />,
-        link:"/adminprofile"
-},
+  
 ]
 
 

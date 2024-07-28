@@ -13,7 +13,8 @@ html,body{
 .background1{
   height: 100vh;
   width: 400vh;
-  background-color:#000910;
+  background-color:#f7f7fc;
+  /* background-image:url(https://static.vecteezy.com/system/resources/previews/025/343/037/original/finance-background-candlesticks-chart-on-dark-screen-stock-market-and-business-investment-concept-vector.jpg) ; */
   margin: 0;
   padding: 0;
   /* overflow-y: scroll auto; */
@@ -75,11 +76,12 @@ overflow: scroll auto;
   cursor: pointer;
   margin-bottom: 70px; 
   border-radius: 10px;
+  color:rgb(255, 255, 255)
 }
 
 .sidebar-item:hover  {
-  background-color: #00ffc7;
-  color:rgb(0, 0, 0);
+ background-color: #403e3e;
+  color:green;
 }
 
 .sidebar-item div {
@@ -92,5 +94,5 @@ overflow: scroll auto;
 }
 
 #btnnav{
-  color:#00ffc7;
+  color:#ffffff;
 }
