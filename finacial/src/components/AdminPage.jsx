@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Admin from './Admin';
-import { Padding } from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
 const AdminPage = () => {
   const location = useLocation();
