@@ -34,7 +34,7 @@ const Landing = () => {
     
     <div className="landing">
     
-      <div className="video-background" >
+      <div className="video-background">
      
       <video autoPlay muted loop id="background-video">
         <source src={video}type="video/mp4" />
@@ -57,39 +57,18 @@ achieving financial goals.</p>
       <Button id='btn1'><Link to='/login' className='link' >Login</Link></Button>
       <Button id='btn2'> <Link to='/signup' className='link'>
      Create Account </Link ></Button> 
-      <Button id='btn3'>About</Button>
+      <Button id='btn3'> <Link to='/about' className='link'>About</Link></Button>
 
       <div id="card1">
         <Container>
-<StyledCard >
-      
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div" id="id1" sx={{textAlign:'center'}}>
-          User
-        </Typography>
-            <Typography gutterleft variant="body1" component="div" id="id2" sx={{ textAlign: 'left' }}>
-              
-              Users can log in with their email and password or
-              sign up by providing a username, email, and password. Upon logging in, they are redirected to their dashboard. The dashboard allows users to track
-              income and expenses by logging details such as amount, category, date, and description, and view their transaction history.
-       </Typography>
-      </CardContent>
-        </StyledCard>
+
         
 
 
 
         <StyledCard >
       
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div" id="id1" sx={{textAlign:'center'}}>
-          Admin
-        </Typography>
-            <Typography gutterleft variant="body1" component="div" id="id2" sx={{ textAlign: 'left' }}>
-              
-            The admin dashboard includes user management, allowing admins to view and manage user accounts, and expense management, enabling admins to view and manage expenses logged by users.
-       </Typography>
-      </CardContent>
+      
           </StyledCard>
           </Container>
     </div>

@@ -30,8 +30,8 @@ const Showexpense = () => {
     const fetchExpenses = async () => {
         try {
             
-            const response = await axios.get('http://localhost:3000/expenses', { params: { userId: id } });
-      
+            const response = await axios.get('http://localhost:3000/expenses', { params: { id } });
+            console.log(response)
         if (response.data.status === 'success') {
             setTransactions(response.data.expenses);
            console.log("trans",setTransactions)
@@ -62,7 +62,7 @@ const Showexpense = () => {
     }
   };
   return (
-    <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', paddingLeft: '30px' }}>
+    <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%'}}>
       <div style={styles.userpg}></div>
       <div style={styles.userpg}>
         <Userpg />
@@ -70,7 +70,6 @@ const Showexpense = () => {
       <Table style={styles.table}>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
             <TableCell>Amount</TableCell>
             <TableCell>Category</TableCell>
             <TableCell>Date</TableCell>
@@ -81,7 +80,7 @@ const Showexpense = () => {
         <TableBody>
           {transactions.map((transaction) => (
             <TableRow key={transaction._id}>
-              <TableCell>{transaction._id}</TableCell>
+          
               <TableCell>{transaction.amount}</TableCell>
               <TableCell>{transaction.category}</TableCell>
               <TableCell>{transaction.date}</TableCell>

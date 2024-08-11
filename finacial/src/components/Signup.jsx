@@ -3,7 +3,7 @@ import video from '../assets/video.mp4';
 import '../style/signup.css';
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const textFieldStyles = {
   '& .MuiFilledInput-root': {
@@ -51,6 +51,8 @@ const Signup = () => {
         Your browser does not support the video tag.
       </video>
       <div className="overlay"></div>
+      <Button id='btn1'><Link to='/' className='link' >Home</Link></Button>
+      <Button id='btn3'><Link to='/login' className='link' >Login</Link></Button>
       <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '10px', paddingLeft: '20vh' }}>
         <form
           onSubmit={handleSubmit}

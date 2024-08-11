@@ -12,6 +12,9 @@ import Showexpense from './components/Showexpense'
 import AdminProfile from './components/AdminProfile'
 import Useradmin from './components/Useradmin'
 import Adminexpenseview from './components/Adminexpenseview'
+import Update  from './components/Update'
+import Updateadmin from './components/Updateadmin'
+import About from './components/About'
 
 
 
@@ -23,6 +26,7 @@ function App() {
   
       
       <Routes>
+        <Route path='/about' element={<About/>}/>
         <Route path='/' element={<Landing />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
@@ -33,8 +37,9 @@ function App() {
         <Route path='/showexpense' element={<Showexpense />} />
         <Route path='/adminprofile' element={<AdminProfile />} />
         <Route path='/useradmin' element={ <Useradmin/>} />
-       <Route path='/view' element={<Adminexpenseview/>}/>
-       
+        <Route path='/useradmin/view' element={<Adminexpenseview />} />
+        <Route path='/update' element={<Update/>}/>
+        <Route path='/updateadmin' element={<Updateadmin/>}/>
         {/* <Navbaruser /> */}       
       </Routes>
 

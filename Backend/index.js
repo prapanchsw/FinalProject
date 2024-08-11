@@ -92,7 +92,26 @@ app.get('/userview', async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Error fetching user data' });
   }
 });
+app.get('/adminview', async (req, res) => {
+  try {
+    console.log('Fetching user data...');
+    const users = await Admin.find();
 
+    // Map transactions count to users
+    const userData = users.map(user => ({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+     
+    }));
+
+    res.json(userData);
+  } catch (error) {
+    console.error('Error fetching admin data:', error);
+    res.status(500).json({ status: 'error', message: 'Error fetching user data' });
+  }
+});
 
 // Add expense route
 app.post('/addexpense', async (req, res) => {
@@ -124,21 +143,32 @@ app.post('/addexpense', async (req, res) => {
     res.status(500).json({ status: 'error', message: 'Error adding expense' });
   }
 });
-
+app.get("/getAllData", async (req, res) => {
+  try {
+    const data = await User.find({});
+    res.status(200).json(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 app.get('/expenses', async (req, res) => {
-  const { userId } = req.query;
-
+  const  userId = req.query.id;
+  console.log(req.query);
   try {
     const user = await User.findById(userId);
-
+    
     if (user) {
      
+      console.log('r')
       const expenses = user.expense.flat(2);
+      console.log(expenses)
       res.status(200).json({ status: 'success', expenses });
     } else {
       res.status(404).json({ status: 'error', message: 'User not found' });
     }
   } catch (error) {
+  
     console.error('Error fetching expenses:', error);
     res.status(500).json({ status: 'error', message: 'Internal server error' });
   }
@@ -163,7 +193,18 @@ app.get('/userid', async (req, res) => {
 });
 
 
-
+app.delete("/remove/:id", async (req, res) => {
+ 
+  try {
+   
+    var id = req.params.id
+    await User.findByIdAndDelete(id)
+    console.log("r")
+      res.send("deleted")
+  } catch (error) {
+      
+  }
+})
 // Login route
 app.post('/loginadmin', async (req, res) => {
   const { email, password } = req.body;
@@ -209,7 +250,42 @@ app.get('/adminid', async (req, res) => {
   }
 });
 
+app.put("/update/:id", async (req, res) => {
+  try {
+      const id = req.params.id;
+      const updatedData = req.body;
 
+      // Update user in the database
+      const updatedUser = await User.findByIdAndUpdate(id, updatedData, { new: true });
+
+      if (!updatedUser) {
+          return res.status(404).send({ message: "User not found" });
+      }
+
+      res.send({ message: "User updated", updatedUser });
+  } catch (error) {
+      console.error("Error updating user:", error);
+      res.status(500).send({ message: "An error occurred while updating the user" });
+  }
+});
+app.put("/updateadmin/:id", async (req, res) => {
+  try {
+      const id = req.params.id;
+      const updatedData = req.body;
+
+      // Update user in the database
+      const updatedUser = await Admin.findByIdAndUpdate(id, updatedData, { new: true });
+
+      if (!updatedUser) {
+          return res.status(404).send({ message: "User not found" });
+      }
+
+      res.send({ message: "User updated", updatedUser });
+  } catch (error) {
+      console.error("Error updating user:", error);
+      res.status(500).send({ message: "An error occurred while updating the user" });
+  }
+});
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

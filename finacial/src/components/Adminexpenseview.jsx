@@ -3,7 +3,7 @@ import AdminPage from './AdminPage';
 import { Table, TableBody, TableCell, TableHead, TableRow, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation ,useNavigate} from 'react-router-dom';
+import { Link, useLocation ,useNavigate} from 'react-router-dom';
 
 
 const styles = {
@@ -11,7 +11,8 @@ const styles = {
     marginTop: '90px',
     backgroundColor: '#fff',
     marginLeft: '140vh',
-    width: '37%'
+    width: '37%',
+    borderRadius: '10px'
   },
   AdminPage: {
     position: 'static',
@@ -29,8 +30,8 @@ const Adminexpenseview = () => {
     const navigate = useNavigate()
 
 
-  const { id } = location.state || { id: 'N/A' };
- console.log('Id',id)
+  const { id,adminid,adminemail,adminname} = location.state || { id: 'N/A',adminid:'N/A',adminemail:'N/A',adminname:'N/A' };
+ console.log('Id',id,adminid,adminemail,adminname)
   useEffect(() => {
     const fetchExpenses = async () => {
         try {
@@ -55,15 +56,12 @@ const Adminexpenseview = () => {
 
 
   return (
-    <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', paddingLeft: '30px',paddingRight:'40px'}}>
-      <div style={styles.AdminPage}></div>
-      <div style={styles.AdminPage}>
-        <AdminPage />
-      </div>
+    <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', paddingLeft: '0px',paddingRight:'200vh'}}>
+     
       <Table style={styles.table}>
         <TableHead>
           <TableRow>
-            <TableCell>ID</TableCell>
+    
             <TableCell>Amount</TableCell>
             <TableCell>Category</TableCell>
             <TableCell>Date</TableCell>
@@ -73,7 +71,7 @@ const Adminexpenseview = () => {
         <TableBody>
           {transactions.map((transaction) => (
             <TableRow key={transaction._id}>
-              <TableCell>{transaction._id}</TableCell>
+
               <TableCell>{transaction.amount}</TableCell>
               <TableCell>{transaction.category}</TableCell>
               <TableCell>{transaction.date}</TableCell>
@@ -81,8 +79,14 @@ const Adminexpenseview = () => {
             </TableRow>
           ))}
         </TableBody>
-          </Table>
-          {() => navigate( { state: { detail: val.title ,id:val._id,email:val.email,name:val.name} })}
+        <br />
+        <Button variant='contained' ><Link to='/useradmin'  state={{id:adminid,name:adminname,email:adminemail}}> Back</Link>
+ 
+</Button>
+      </Table>
+     
+      {/* {() => navigate({ state: { detail: val.title, id: val._id, email: val.email, name: val.name} })} */}
+   
     </div>
   );
 };

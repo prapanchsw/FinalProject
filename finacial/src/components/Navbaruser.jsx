@@ -1,5 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbaruser = () => {
   return (
@@ -13,7 +14,7 @@ const Navbaruser = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1,color:'white' }}>
            UserPanel
           </Typography>
-          <Button color="inherit" id="btnnav">LogOut</Button>
+          <Button  id="btnnav"><Link to='/login' >LogOut</Link></Button>
         </Toolbar>
       </AppBar>
           </Box>

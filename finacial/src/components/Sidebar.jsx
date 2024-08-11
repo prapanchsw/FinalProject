@@ -1,5 +1,5 @@
 import React from 'react'
-import { AccountBalance, AdminPanelSettings, Bathroom, ExpandCircleDown, Home, Mail, ManageAccountsOutlined, Person2, Person2Outlined, PersonPinCircleOutlined } from '@mui/icons-material';
+import { AccountBalance, AdminPanelSettings, Bathroom, ExpandCircleDown, Home, Mail, ManageAccountsOutlined, Money, Person2, Person2Outlined, PersonPinCircleOutlined } from '@mui/icons-material';
 
 export const Sidebar = [
   
@@ -13,6 +13,8 @@ export const Sidebar = [
         icon: <ManageAccountsOutlined />,
         link:"/useradmin"
     },
+   
+  
   
 ]
 

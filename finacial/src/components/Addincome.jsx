@@ -1,17 +1,19 @@
-import { Button, Container, Paper, TextField, Typography } from '@mui/material';
+import { Button, Container, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import axios from 'axios';
 import Userpg from './Userpg';
 import { useLocation } from 'react-router-dom';
+import { Padding } from '@mui/icons-material';
 
 const styles = {
     root: {
         textAlign: 'center',
-        padding: '40px',
+        padding: '50px',
         position: 'relative',
         zIndex: 1,
-        width: '130vh',
+        width: '120vh',
         borderRadius: '40px',
+      
     },
     form: {
         display: 'flex',
@@ -20,8 +22,8 @@ const styles = {
         marginBottom: '20px',
         marginLeft: '110px',
         padding: '20px',
-        backgroundColor: '',
-        
+        // backgroundColor: '',
+          paddingTop:'60px',
         borderRadius: '20px',
     },
     userpg: {
@@ -75,12 +77,12 @@ const Addincome = () => {
     
 
     return (
-        <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', paddingLeft: '30px' }}>
+        <div style={{ overflowX: 'hidden', position: 'relative', height: '100vh', width: '100%', overflowY:'hidden'}}>
             <div style={styles.userpg}>
                 <Userpg />
             </div>
             <Container style={styles.root}>
-                <Typography variant="h4" gutterBottom>User Dashboard</Typography>
+                <br /><br />
                 <Paper style={styles.form} elevation={3}>
                     <form onSubmit={handleAddTransaction}>
                         <TextField
@@ -91,14 +93,29 @@ const Addincome = () => {
                             fullWidth
                             margin="normal"
                         />
-                        <TextField
-                            label="Category"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                            required
-                            fullWidth
-                            margin="normal"
-                        />
+                     <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel id="role-select-label" sx={{ color: 'grey' }}>Category</InputLabel>
+                <Select
+                  labelId="role-select-label"
+                  id="role-select"
+                  value={category}
+                  label="Category"
+                  onChange={(e) => setCategory(e.target.value)}
+                  sx={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+                      color: 'black',
+                    textAlign:"left"
+                  }}
+                >
+                  <MenuItem value={'Food'}>Food</MenuItem>
+                  <MenuItem value={'Transport'}>Transport</MenuItem>
+                  <MenuItem value={'Entertainment'}>Entertainment</MenuItem>
+                  <MenuItem value={'Other'}>Other</MenuItem>
+                  
+                </Select>
+              </FormControl>
+            </Grid>
                         <TextField
                             label="Date"
                             type="date"

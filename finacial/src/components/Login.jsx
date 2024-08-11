@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Grid, Box, InputLabel, Select, MenuItem, FormControl } from '@mui/material';
 import video from '../assets/video.mp4';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const textFieldStyles = {
@@ -91,6 +91,8 @@ const Login = () => {
         Your browser does not support the video tag.
       </video>
       <div className="overlay"></div>
+      <Button id='btn1'><Link to='/' className='link' >Home</Link></Button>
+      <Button id='btn3'><Link to='/signup' className='link' >Create Account</Link></Button>
       <Container style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '20px', paddingLeft: '20vh' }}>
         <form
           style={{
@@ -106,12 +108,14 @@ const Login = () => {
           }}
           onSubmit={handleSubmit}
         >
+          
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12}>
               <Typography variant="h3" align="center" gutterBottom>
                 Sign In
               </Typography>
             </Grid>
+            
             <Grid item xs={12}>
               <FormControl fullWidth>
                 <InputLabel id="role-select-label" sx={{ color: 'white' }}>Role</InputLabel>
@@ -178,7 +182,7 @@ const Login = () => {
                 <Typography sx={{ textAlign: 'left', marginLeft: '-150px' }}>
                   Don't have an account?
                 </Typography>
-                <Button variant="text">Sign up</Button>
+                <Button variant="text"> <Link to='/signup'> Sign up</Link></Button>
               </Box>
             </Grid>
           </Grid>

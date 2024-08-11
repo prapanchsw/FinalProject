@@ -9,11 +9,12 @@ import { useLocation,useNavigate, } from 'react-router-dom';
 const Admin = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { email, name, id } = location.state || {email: 'N/A', name: 'N/A', id: 'N/A' };
+    const { email, name, id } = location.state || { email: 'N/A', name: 'N/A',id: 'N/A' };
+    console.log(email,name,id)
     return (
         <div className="background1" >
             <div className="sidebar" sx={{overflowY:'hidden',position:'fixed'}}>
-                <ul className="sidebarlist" style={{marginLeft: '-130px', paddingLeft: '100%', height: '100%', overflow:'hidden'}}>
+                <ul className="sidebarlist" style={{marginLeft: '-130px', paddingLeft: '100%', height: '400vh', overflow:'hidden'}}>
                     <li style={{ display: 'flex', alignItems: 'center', padding: '50px 20px 5px 20px' }}>
                         <AdminPanelSettings sx={{ fontSize: 100, marginRight:'20px' ,marginLeft:'330px',color:'white'}} /> 
                        
